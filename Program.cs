@@ -6,7 +6,20 @@ namespace MentalEffect
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            GameMaster gameMaster = new GameMaster();
+
+            gameMaster.PrintMainMenu();
+            gameMaster.AskForInput();
+            string wayOfAction = Console.ReadLine();
+
+            if (int.TryParse(wayOfAction, out int wayOfActionNumber))
+            {
+                
+            }
+            else
+            {
+                gameMaster.PrintWrongInput();
+            }
         }
     }
 }
