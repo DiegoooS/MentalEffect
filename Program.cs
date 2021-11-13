@@ -6,20 +6,52 @@ namespace MentalEffect
     {
         static void Main(string[] args)
         {
+            // Set GameMaster object to control the game
             GameMaster gameMaster = new GameMaster();
 
-            gameMaster.PrintMainMenu();
-            gameMaster.AskForInput();
-            string wayOfAction = Console.ReadLine();
+            // Creat Main Menu
+            MainMenu(gameMaster);
+        }
 
-            if (int.TryParse(wayOfAction, out int wayOfActionNumber))
+        private static void MainMenu(GameMaster gameMaster)
+        {
+            int wayOfActionNumber = 0;
+
+            while (wayOfActionNumber != 3)
             {
-                
-            }
-            else
-            {
-                gameMaster.PrintWrongInput();
+                gameMaster.PrintMainMenu();
+                gameMaster.AskForInput();
+                string wayOfAction = Console.ReadLine();
+
+                if (int.TryParse(wayOfAction, out wayOfActionNumber))
+                {
+                    switch (wayOfActionNumber)
+                    {
+                        case 1:
+                            {
+                                gameMaster.StartGame();
+                                break;
+                            }
+                        case 2:
+                            {
+                                break;
+                            }
+                        default:
+                            {
+                                Console.Clear();
+                                gameMaster.PrintWrongNumberInput();
+                                break;
+                            }
+                    }
+                }
+                else
+                {
+                    Console.Clear();
+                    gameMaster.PrintWrongInput();
+                }
             }
         }
+
+
     }
 }
